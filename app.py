@@ -17,11 +17,11 @@ sistype=result['val'][5]
 # Creating layout
 
 if sistype=='leve':
-    level=':smile: Leve'
+    level=':green_circle: Leve'
 elif sistype=='medio':
-    level=' Medio'
+    level=':yellow_circle: Medio'
 elif sistype=='alto':
-    level=' Alto'
+    level=':red_circle: Alto'
 else:
-    level='? Unknown'
-st.markdown('# Alerta de nivel: '+level)
+    level=':white_circle: Desconocido'
+st.markdown('# Nivel de alerta: '+level)
