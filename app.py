@@ -15,4 +15,13 @@ mag=result['val'][4]
 sistype=result['val'][5]
 
 # Creating layout
-st.markdown('# Alerta de nivel: '+sistype)
+
+if sistype=='leve':
+    level='󰕿 Leve'
+elif sistype=='medio':
+    level=' Medio'
+elif sistype=='alto':
+    level=' Alto'
+else:
+    level='? Unknown'
+st.markdown('# Alerta de nivel: '+level)
