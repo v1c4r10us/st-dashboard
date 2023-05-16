@@ -45,6 +45,21 @@ header_style = """
         .header span {
             font-size: 48px;
         }
+
+        @media (max-width: 728px) {
+            .header {
+                flex-wrap: wrap;
+                padding: 5px;
+            }
+
+            .header span {
+                font-size: 20px
+            }
+
+            .header .image {
+                margin-bottom: 5px;
+            }
+        }
     </style>
 """
 
@@ -98,7 +113,22 @@ split_markdown_style = """
             font-size: 44px;
             color: black;
         }
-        
+
+        @media (max-width: 728px) {
+            .left-section, .right-section {
+                width: 100%;
+                max-width: none;
+                margin-right: 0;
+                margin-left: 0;
+            }
+            .split-markdown h2 {
+                font-size: 34px;
+            }
+            .split-markdown p {
+                font-size: 20px;
+                color: black;
+            }
+        }        
     </style>
 """
 
