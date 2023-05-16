@@ -1,6 +1,11 @@
 import streamlit as st
 from PIL import Image
 
+# Design
+st.set_page_config(page_title="Alertas Sismicas",
+                   page_icon="bar_chart:",
+                   layout="wide")
+
 result=st.experimental_get_query_params() #Get params of url
 
 country=result['val'][0] #Country
@@ -16,11 +21,6 @@ st.text('Longitud: '+longitude)
 st.text('Profundidad: '+depth)
 st.text('Magnitud: '+mag)
 st.text('Tipo: '+sistype)
-
-# Design
-st.set_page_config(page_title="Alertas Sismicas",
-                   page_icon="bar_chart:",
-                   layout="wide")
 
 header_style = """
     <style>
