@@ -17,7 +17,7 @@ sistype=result['val'][5]
 # Creating layout
 
 if sistype=='leve':
-    level=':100: Leve'
+    level=':smile: Leve'
 elif sistype=='medio':
     level=' Medio'
 elif sistype=='alto':
