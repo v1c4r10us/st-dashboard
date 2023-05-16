@@ -15,13 +15,6 @@ depth=result['val'][3]
 mag=result['val'][4]
 sistype=result['val'][5]
 
-st.title(country)
-st.text('Latitud: '+latitude)
-st.text('Longitud: '+longitude)
-st.text('Profundidad: '+depth)
-st.text('Magnitud: '+mag)
-st.text('Tipo: '+sistype)
-
 header_style = """
     <style>
         .header {
@@ -72,7 +65,7 @@ st.markdown(
     f'''
     <div class="header">
         <div class="image">
-            <img src="{icono1}" alt="Alert Icon">
+            <img src="src/alert_icon.png" alt="Alert Icon">
         </div>
         <span>ALERTA DE SISMO FUERTE</span>
         <div class="image">
