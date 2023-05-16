@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import image
+from PIL import Image
 
 result=st.experimental_get_query_params() #Get params of url
 
