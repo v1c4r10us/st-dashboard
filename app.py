@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 # Design
 st.set_page_config(page_title="Alertas Sismicas",
                    page_icon="bar_chart:",
