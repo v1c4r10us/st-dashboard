@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
+import pydeck as pdk
 # Design
 st.set_page_config(page_title="Alertas Sismicas",
                    page_icon="bar_chart:",
@@ -35,4 +35,32 @@ df=pd.DataFrame(d)
 col1,col2=st.columns(2)
 col1.metric(label='Magnitud', value=mag, delta=delta)
 col2.metric(label='Profundidad', value=depth, delta='Km')
-st.map(df, zoom=-1)
+
+st.pydeck_chart(pdk.Deck(
+    map_style=None,
+    initial_view_state=pdk.ViewState(
+        latitude=float(latitude),
+        longitude=float(longitude),
+        zoom=11,
+        pitch=50,
+    ),
+    layers=[
+        pdk.Layer(
+           'HexagonLayer',
+           data=df,
+           get_position='[lon, lat]',
+           radius=200,
+           elevation_scale=4,
+           elevation_range=[0, 1000],
+           pickable=True,
+           extruded=True,
+        ),
+        pdk.Layer(
+            'ScatterplotLayer',
+            data=df,
+            get_position='[lon, lat]',
+            get_color='[200, 30, 0, 160]',
+            get_radius=200,
+        ),
+    ],
+))
