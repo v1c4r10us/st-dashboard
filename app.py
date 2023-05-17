@@ -32,7 +32,7 @@ st.markdown('# Nivel de alerta: '+level) #Level
 st.markdown('***')
 #d={'lat':latitude, 'lon':longitude}
 #df=pd.DataFrame(d)
-col1,col2,col3=st.columns(2)
+col1,col2=st.columns(2)
 col1.metric(label='Magnitud', value=mag, delta=delta)
 col2.metric(label='Profundidad', value=depth, delta='Km')
 
