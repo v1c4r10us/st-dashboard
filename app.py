@@ -26,6 +26,6 @@ else:
     level=':white_circle: Desconocido'
 st.markdown('# Nivel de alerta: '+level) #Level
 
-st.metric(label="Magnitud", value=mag, delta="ML")
+st.metric(label="Magnitud", value=mag, delta="-ML")
 
 
