@@ -39,5 +39,5 @@ col2.metric(label='Profundidad', value=depth, delta='Km')
 df = pd.DataFrame(
     np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
     columns=['lat', 'lon'])
-
+print(df)
 st.map(df)
