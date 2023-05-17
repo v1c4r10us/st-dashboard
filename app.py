@@ -30,14 +30,9 @@ else:
     delta='ML'
 st.markdown('# Nivel de alerta: '+level) #Level
 st.markdown('***')
-#d={'lat':latitude, 'lon':longitude}
-#df=pd.DataFrame(d)
+d={'lat':[float(latitude)], 'lon':[float(longitude)]}
+df=pd.DataFrame(d)
 col1,col2=st.columns(2)
 col1.metric(label='Magnitud', value=mag, delta=delta)
 col2.metric(label='Profundidad', value=depth, delta='Km')
-
-df = pd.DataFrame(
-    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-    columns=['lat', 'lon'])
-print(df)
 st.map(df)
