@@ -29,8 +29,8 @@ else:
     delta='ML'
 st.markdown('# Nivel de alerta: '+level) #Level
 st.markdown('***')
-col1, col2 = st.columns([1,1])
-col1.metric(label='Magnitud', value=mag, delta=delta) #Magnitude
-col2.metric(label='Profundidad', value=depth, delta='Km') #Depth
+with st.container():
+    st.metric(label='Magnitud', value=mag, delta=delta) #Magnitude
+    st.metric(label='Profundidad', value=depth, delta='Km') #Depth
 
 
