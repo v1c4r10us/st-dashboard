@@ -44,7 +44,7 @@ st.pydeck_chart(pdk.Deck(
     initial_view_state=pdk.ViewState(
         latitude=float(latitude),
         longitude=float(longitude),
-        zoom=8,
+        zoom=5,
         pitch=50,
     ),
     layers=[
@@ -53,7 +53,7 @@ st.pydeck_chart(pdk.Deck(
             data=df,
             get_position='[lon, lat]',
             get_color=rgba,
-            get_radius=32000,
+            get_radius=float(mag)*500,
         ),
     ],
 ))
