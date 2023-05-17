@@ -1,5 +1,5 @@
 import streamlit as st
-
+import pandas as pd
 # Design
 st.set_page_config(page_title="Alertas Sismicas",
                    page_icon="bar_chart:",
@@ -29,4 +29,9 @@ else:
     delta='ML'
 st.markdown('# Nivel de alerta: '+level) #Level
 st.markdown('***')
-st.write(st.metric(label='Magnitud', value=mag, delta=delta), st.metric(label='Profundidad', value=depth, delta='Km'))
+d={'lat':latitude, 'lon':longitude}
+df=pd.DataFrame(d)
+col1,col2,col3=st.columns(3)
+col1.metric(label='Magnitud', value=mag, delta=delta)
+col2.metric(label='Profundidad', value=depth, delta='Km')
+col3.map(df)
