@@ -53,7 +53,7 @@ st.pydeck_chart(pdk.Deck(
             data=df,
             get_position='[lon, lat]',
             get_color=rgba,
-            get_radius=float(mag)*50000,
+            get_radius=float(mag)*5000,
         ),
     ],
 ))
