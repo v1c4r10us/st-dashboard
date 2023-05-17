@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
+from PIL import Image
+
 # Design
 st.set_page_config(page_title="Alertas Sismicas",
                    page_icon="bar_chart:",
@@ -55,7 +57,13 @@ st.pydeck_chart(pdk.Deck(
             data=df,
             get_position='[lon, lat]',
             get_color=rgba,
+
             get_radius=float(mag)*5000,
         ),
     ],
 ))
+
+st.markdown('***')
+St.markdown('## Recomendaciones')
+image = Image.open('infografia.png')
+st.image(image)
