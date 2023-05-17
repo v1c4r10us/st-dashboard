@@ -19,12 +19,15 @@ sistype=result['val'][5]
 if sistype=='leve':
     level='Leve :large_green_circle:'
     delta='ML'
+    rgba='[0,204,0,160]'
 elif sistype=='medio':
     level='Medio :large_yellow_circle:'
     delta='ML'
+    rgba='[255,255,0,160]'
 elif sistype=='alto':
     level='Alto :red_circle:'
     delta='-ML'
+    rgba='[255,0,0,160]'
 else:
     level=':white_circle: Desconocido'
     delta='ML'
@@ -41,7 +44,7 @@ st.pydeck_chart(pdk.Deck(
     initial_view_state=pdk.ViewState(
         latitude=float(latitude),
         longitude=float(longitude),
-        zoom=6,
+        zoom=8,
         pitch=50,
     ),
     layers=[
@@ -49,8 +52,8 @@ st.pydeck_chart(pdk.Deck(
             'ScatterplotLayer',
             data=df,
             get_position='[lon, lat]',
-            get_color='[30, 200, 69]',
-            get_radius=16000,
+            get_color=rgba,
+            get_radius=32000,
         ),
     ],
 ))
