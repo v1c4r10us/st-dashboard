@@ -29,7 +29,7 @@ else:
     delta='ML'
 st.markdown('# Nivel de alerta: '+level) #Level
 st.markdown('***')
-col1, col2 = st.columns(2, gap='small')
+col1, col2 = st.columns([1,1])
 with col1:
     st.metric(label='Magnitud', value=mag, delta=delta) #Magnitude
 with col2:    
