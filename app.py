@@ -31,6 +31,8 @@ elif sistype=='alto':
 else:
     level=':white_circle: Desconocido'
     delta='ML'
+    rgba='[255,255,0,160]'
+    
 st.markdown('# Nivel de alerta: '+level) #Level
 st.markdown('***')
 d={'lat':[float(latitude)], 'lon':[float(longitude)]}
