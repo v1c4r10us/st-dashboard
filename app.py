@@ -70,5 +70,5 @@ st.image(image)
 
 st.markdown('***')
 a,b=st.columns(2)
-a.markdown('[Feedback :white_check_mark:](https://www.facebook.com)')
-b.markdown('[Community :robot_face:](https://www.google.com)')
+a.markdown('## [Feedback :white_check_mark:](https://www.facebook.com)')
+b.markdown('## [Community :robot_face:](https://www.google.com)')
