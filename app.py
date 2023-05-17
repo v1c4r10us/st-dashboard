@@ -70,6 +70,7 @@ image = Image.open('infografia.png')
 st.image(image)
 
 st.markdown('***')
+st.markdown('## Ayúdanos a mejorar...')
 a,b=st.columns(2)
 a.markdown('## [Feedback :white_check_mark:](https://www.facebook.com)')
 b.markdown('## [Community :robot_face:](https://www.google.com)')
