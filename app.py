@@ -39,7 +39,7 @@ st.markdown('# Nivel de alerta: '+level) #Level
 st.markdown('***')
 d={'lat':[float(latitude)], 'lon':[float(longitude)]}
 df=pd.DataFrame(d)
-col1,col2=st.columns(3)
+col1,col2,col3=st.columns(3)
 col1.metric(label='Magnitud', value=mag, delta=delta)
 col2.metric(label='Profundidad', value=depth, delta='Km')
 col3.markdown('## [Top 20 :eye:](https://us-central1-alerta-sismos-386306.cloudfunctions.net/function-mongo)')
