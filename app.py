@@ -64,6 +64,6 @@ st.pydeck_chart(pdk.Deck(
 ))
 
 st.markdown('***')
-St.markdown('## Recomendaciones')
+st.markdown('## Recomendaciones')
 image = Image.open('infografia.png')
 st.image(image)
