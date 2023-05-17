@@ -15,17 +15,21 @@ mag=result['val'][4]
 sistype=result['val'][5]
 
 # Creating layout
-
 if sistype=='leve':
     level='Leve :large_green_circle:'
+    delta='ML'
 elif sistype=='medio':
     level='Medio :large_yellow_circle:'
+    delta='ML'
 elif sistype=='alto':
     level='Alto :red_circle:'
+    delta='-ML'
 else:
     level=':white_circle: Desconocido'
+    delta='ML'
 st.markdown('# Nivel de alerta: '+level) #Level
-
-st.metric(label="Magnitud", value=mag, delta="-ML")
+st.markdown('***')
+st.metric(label='Magnitud', value=mag, delta=delta) #Magnitude
+st.metric(label='Profundidad', value=depth, delta='Km') #Depth
 
 
