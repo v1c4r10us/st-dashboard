@@ -17,7 +17,7 @@ sistype=result['val'][5]
 # Creating layout
 
 if sistype=='leve':
-    level=':green_circle: Leve'
+    level=':large_green_circle: Leve'
 elif sistype=='medio':
     level=':yellow_circle: Medio'
 elif sistype=='alto':
