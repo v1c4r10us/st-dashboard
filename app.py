@@ -17,11 +17,15 @@ sistype=result['val'][5]
 # Creating layout
 
 if sistype=='leve':
-    level=':large_green_circle: Leve'
+    level='Leve :large_green_circle:'
 elif sistype=='medio':
-    level=':yellow_circle: Medio'
+    level='Medio :large_yellow_circle:'
 elif sistype=='alto':
-    level=':red_circle: Alto'
+    level='Alto :red_circle:'
 else:
     level=':white_circle: Desconocido'
-st.markdown('# Nivel de alerta: '+level)
+st.markdown('# Nivel de alerta: '+level) #Level
+
+st.metric(label="Magnitud", value=mag, delta="ML")
+
+
