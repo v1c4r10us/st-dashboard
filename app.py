@@ -42,7 +42,7 @@ df=pd.DataFrame(d)
 col1,col2,col3=st.columns(3)
 col1.metric(label='Magnitud', value=mag, delta=delta)
 col2.metric(label='Profundidad', value=depth, delta='Km')
-col3.markdown('## <a href=https://us-central1-alerta-sismos-386306.cloudfunctions.net/function-mongo>Top 20</a>')
+col3.markdown('## [View last 20 :eye:](https://us-central1-alerta-sismos-386306.cloudfunctions.net/function-mongo))
 
 st.pydeck_chart(pdk.Deck(
     map_style=None,
