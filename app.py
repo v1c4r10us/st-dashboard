@@ -1,74 +1,39 @@
 import streamlit as st
-import pandas as pd
-import pydeck as pdk
-from PIL import Image
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import datetime
 
-# Design
-st.set_page_config(page_title="Alertas Sismicas",
-                   page_icon="bar_chart:",
-                   layout="wide")
+# Load the credentials from secrets.toml
+creds = st.secrets["gcp"]
 
-result=st.experimental_get_query_params() #Get params of url
+# Authorize the client with the retrieved credentials
+client = gspread.service_account_from_dict(creds)
 
-country=result['val'][0]
-latitude=result['val'][1]
-longitude=result['val'][2]
-depth=result['val'][3]
-mag=result['val'][4]
-sistype=result['val'][5]
+# Open the Google Sheet by its title or URL
+sheet = client.open("Feedback usuario (respuestas)")
 
-# Creating layout
-if sistype=='leve':
-    level='Leve :large_green_circle:'
-    delta='ML'
-    rgba='[0,204,0,160]'
-elif sistype=='medio':
-    level='Medio :large_yellow_circle:'
-    delta='ML'
-    rgba='[255,255,0,160]'
-elif sistype=='alto':
-    level='Alto :red_circle:'
-    delta='-ML'
-    rgba='[255,0,0,160]'
-else:
-    level=':white_circle: Desconocido'
-    delta='ML'
-    rgba='[255,255,0,160]'
-    
-st.markdown('# Nivel de alerta: '+level) #Level
-st.markdown('***')
-d={'lat':[float(latitude)], 'lon':[float(longitude)]}
-df=pd.DataFrame(d)
-col1,col2,col3=st.columns(3)
-col1.metric(label='Magnitud', value=mag, delta=delta)
-col2.metric(label='Profundidad', value=depth, delta='Km')
-col3.markdown('## [View last 20 :eye:](https://us-central1-alerta-sismos-386306.cloudfunctions.net/function-mongo)')
+# Access the specific worksheet within the sheet
+worksheet = sheet.get_worksheet(0)
 
-st.pydeck_chart(pdk.Deck(
-    map_style=None,
-    initial_view_state=pdk.ViewState(
-        latitude=float(latitude),
-        longitude=float(longitude),
-        zoom=5,
-        pitch=50,
-    ),
-    layers=[
-        pdk.Layer(
-            'ScatterplotLayer',
-            data=df,
-            get_position='[lon, lat]',
-            get_color=rgba,
 
-            get_radius=float(mag)*5000,
-        ),
-    ],
-))
+st.title("Formulario de Sismo")
+menu = ['Home', 'About']
+choice = st.sidebar.selectbox("Menu", menu)
 
-st.markdown('***')
-st.markdown('## Recomendaciones')
-image = Image.open('infografia.png')
-st.image(image)
+if choice == "Home":
+    st.subheader("Formulario")
 
-st.markdown('***')
-st.markdown('## Ayúdanos a mejorar...')
-st.markdown('## [Feedback :white_check_mark:](https://docs.google.com/forms/d/e/1FAIpQLSfw7YuyDptKQKgKMYrZcK-nEvO1NMYhVfavrgafufDiE4hh-g/viewform)')
+    with st.form(key='formulario'):
+        fecha = datetime.datetime.now()
+        formatted_datetime = fecha.strftime("%d/%m/%y %H:%M:%S")
+        input1 = st.selectbox('Sentiste el ultimo sismo?', options=['Sí', 'No'])
+        input2 = st.selectbox("Califica nuestros servicios (bajo 1 y alto 5)", options=['1', '2', '3', '4', '5'])
+        input3 = st.selectbox('Compartirias nuestra aplicacion?', options=['Sí', 'No'])
+        input4 = st.text_area('Algún comentario de mejora?')
+
+        row = [formatted_datetime, input1, input2, input3, input4]
+        boton = st.form_submit_button(label='Subir')
+
+    if boton:
+        st.success("Has subido tu informacion con exito")
+        worksheet.append_row(row)
