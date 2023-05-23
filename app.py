@@ -25,18 +25,22 @@ if sistype=='leve':
     level='Leve :large_green_circle:'
     delta='ML'
     rgba='[0,204,0,160]'
+    recm='Indicaciones para leve'
 elif sistype=='medio':
     level='Medio :large_yellow_circle:'
     delta='ML'
     rgba='[255,255,0,160]'
+    recm='Indicaciones para medio'
 elif sistype=='alto':
     level='Alto :red_circle:'
     delta='-ML'
     rgba='[255,0,0,160]'
+    recm='Indicaciones para alto'
 else:
     level=':white_circle: Desconocido'
     delta='ML'
     rgba='[255,255,0,160]'
+    recm='Desconocido'
 
 # Load the credentials from secrets.toml
 creds = st.secrets["gcp"]
@@ -81,6 +85,10 @@ if choice=='Home':
             ),
         ],
     ))
+
+    #Recommendatios
+    st.markdown('## Recomendaciones')
+    st.text(decm)
 
 if choice=='Feedback':
     st.subheader('Ayúdanos a mejorar...')
