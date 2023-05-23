@@ -88,7 +88,7 @@ if choice=='Home':
 
     #Recommendatios
     st.markdown('## Recomendaciones')
-    st.text(decm)
+    st.text(recm)
 
 if choice=='Feedback':
     st.subheader('Ayúdanos a mejorar...')
