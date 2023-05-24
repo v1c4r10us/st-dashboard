@@ -25,22 +25,22 @@ if sistype=='leve':
     level='Leve :large_green_circle:'
     delta='ML'
     rgba='[0,204,0,160]'
-    recm='Revisa las conexiones de gas, luz y agua!'
+    recm='bajo.jpeg'
 elif sistype=='medio':
     level='Medio :large_yellow_circle:'
     delta='ML'
     rgba='[255,255,0,160]'
-    recm='Resguardate bajo una mesa o la cama!'
+    recm='medio.jpeg'
 elif sistype=='alto':
     level='Alto :red_circle:'
     delta='-ML'
     rgba='[255,0,0,160]'
-    recm='Evacúa si es posible, sino busca resguardo en un lugar seguro!'
+    recm='alto.jpeg'
 else:
     level=':white_circle: Desconocido'
     delta='ML'
     rgba='[255,255,0,160]'
-    recm='Desconocido'
+    recm='bajo.jpeg'
 
 if country=='usa':
     flag=':flag-us:'
@@ -90,7 +90,7 @@ if choice=='Home':
             data=df,
             get_position='[lon, lat]',
             get_color=rgba,
-            get_radius=float(mag)*float(depth)*12000,
+            get_radius=float(mag)*8000,
             ),
         ],
     ))
@@ -98,8 +98,9 @@ if choice=='Home':
     #Recommendations
     st.markdown('***')
     st.markdown('## Recomendaciones')
-    st.text(recm)
     image = Image.open('infografia.png')
+    image_b=Image.open(recm)
+    st.image(image_b)
     st.image(image)
 
 if choice=='Feedback':
