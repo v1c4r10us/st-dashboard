@@ -67,7 +67,7 @@ menu = ['Home', 'Feedback']
 choice = st.sidebar.selectbox("Menu", menu)
 
 if choice=='Home':
-    st.markdown(flag+'# Nivel de alerta: '+level) #Level
+    st.markdown('# {0} Nivel de alerta: {1}'.format(flag, level)) #Level
     st.markdown('***')
     d={'lat':[float(latitude)], 'lon':[float(longitude)]}
     df=pd.DataFrame(d)
@@ -95,7 +95,8 @@ if choice=='Home':
         ],
     ))
 
-    #Recommendatios
+    #Recommendations
+    st.markdown('***')
     st.markdown('## Recomendaciones')
     st.text(recm)
     image = Image.open('infografia.png')
