@@ -90,7 +90,7 @@ if choice=='Home':
             data=df,
             get_position='[lon, lat]',
             get_color=rgba,
-            get_radius=float(mag)*float(depth)*8000,
+            get_radius=float(mag)*float(depth)*12000,
             ),
         ],
     ))
