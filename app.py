@@ -25,22 +25,31 @@ if sistype=='leve':
     level='Leve :large_green_circle:'
     delta='ML'
     rgba='[0,204,0,160]'
-    recm='Indicaciones para leve'
+    recm='Revisa las conexiones de gas, luz y agua!'
 elif sistype=='medio':
     level='Medio :large_yellow_circle:'
     delta='ML'
     rgba='[255,255,0,160]'
-    recm='Indicaciones para medio'
+    recm='Resguardate bajo una mesa o la cama!'
 elif sistype=='alto':
     level='Alto :red_circle:'
     delta='-ML'
     rgba='[255,0,0,160]'
-    recm='Indicaciones para alto'
+    recm='Evacúa si es posible, sino busca resguardo en un lugar seguro!'
 else:
     level=':white_circle: Desconocido'
     delta='ML'
     rgba='[255,255,0,160]'
     recm='Desconocido'
+
+if country=='usa':
+    flag=':flag-us:'
+elif country=='japon':
+    flag=':flag-jp:'
+elif country='chile':
+    flag=':flag-cl:'
+else:
+    flag=':flag-us:'
 
 # Load the credentials from secrets.toml
 creds = st.secrets["gcp"]
@@ -58,7 +67,7 @@ menu = ['Home', 'Feedback']
 choice = st.sidebar.selectbox("Menu", menu)
 
 if choice=='Home':
-    st.markdown('# Nivel de alerta: '+level) #Level
+    st.markdown(flag+'# Nivel de alerta: '+level) #Level
     st.markdown('***')
     d={'lat':[float(latitude)], 'lon':[float(longitude)]}
     df=pd.DataFrame(d)
@@ -89,6 +98,8 @@ if choice=='Home':
     #Recommendatios
     st.markdown('## Recomendaciones')
     st.text(recm)
+    image = Image.open('infografia.png')
+    st.image(image)
 
 if choice=='Feedback':
     st.subheader('Ayúdanos a mejorar...')
