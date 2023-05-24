@@ -46,7 +46,7 @@ if country=='usa':
     flag=':flag-us:'
 elif country=='japon':
     flag=':flag-jp:'
-elif country='chile':
+elif country=='chile':
     flag=':flag-cl:'
 else:
     flag=':flag-us:'
