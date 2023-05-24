@@ -67,14 +67,14 @@ menu = ['Home', 'Feedback']
 choice = st.sidebar.selectbox("Menu", menu)
 
 if choice=='Home':
-    st.markdown('# {0} Nivel de alerta: {1}'.format(flag, level)) #Level
+    st.markdown('# {0} Intensidad: {1}'.format(flag, level)) #Level
     st.markdown('***')
     d={'lat':[float(latitude)], 'lon':[float(longitude)]}
     df=pd.DataFrame(d)
     col1,col2,col3=st.columns(3)
     col1.metric(label='Magnitud', value=mag, delta=delta)
     col2.metric(label='Profundidad', value=depth, delta='Km')
-    col3.markdown('## [View last 20 :eye:](https://us-central1-alerta-sismos-386306.cloudfunctions.net/function-mongo)')
+    col3.markdown('## [Ver últimos 20 :eye:](https://us-central1-alerta-sismos-386306.cloudfunctions.net/function-mongo)')
 
     st.pydeck_chart(pdk.Deck(
         map_style=None,
